@@ -4,20 +4,19 @@ class BillDecorator
   end
 
   def decorate_total
-    "£" + format(bill.total)
+    format(bill.total)
   end
 
   def split_by(number)
-
+    bill.payers.map { |payer| format(payer) }
   end
 
-
+  private
+  
   attr_reader :bill
   attr_accessor :total
 
-  private
-
   def format(number)
-    sprintf('%.2f', number)
+    "£" + sprintf('%.2f', number)
   end
 end

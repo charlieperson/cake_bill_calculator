@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'bill_decorator'
 
 describe BillDecorator do
   let(:bill) { double(:bill) }
@@ -12,7 +13,8 @@ describe BillDecorator do
   end
 
   describe '#split_by' do
-    xit 'should return an array of amounts' do
+    it 'should return an array of amounts' do
+      allow(bill).to receive(:payers).and_return([3.34, 3.33, 3.33])
       expect(subject.split_by(3)).to eq(['£3.34', '£3.33', '£3.33'])
     end
   end

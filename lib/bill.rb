@@ -19,9 +19,9 @@ class Bill
     payers
   end
 
-  attr_reader :subtotal, :service_charge, :discount, :payers
-
   private
+
+  attr_reader :subtotal, :service_charge, :discount, :payers
 
   def round_down(number)
     (number*100).floor/100.0
