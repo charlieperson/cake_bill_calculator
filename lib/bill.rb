@@ -3,22 +3,23 @@ require 'pry'
 class Bill
   def initialize(subtotal:, service_charge: 0, discount: 0)
     @subtotal, @service_charge, @discount = subtotal, service_charge, discount
+    @payers = []
+    @total = 0
   end
 
   def total
-    subtotal + service_charge - discount
+    @total = subtotal + service_charge - discount
   end
 
   def split_by(number)
-    payers = []
     rounded_split = round_down((self.total / number.to_f))
     leftover = round_up(self.total - (rounded_split * number))
     number.times { payers << rounded_split }
     payers[Kernel.rand(payers.length)] += leftover
-    return payers
+    payers
   end
 
-  attr_reader :subtotal, :service_charge, :discount
+  attr_reader :subtotal, :service_charge, :discount, :payers
 
   private
 

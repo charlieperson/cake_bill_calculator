@@ -3,15 +3,15 @@ class BillDecorator
     @bill = bill
   end
 
-  def total
-    # TODO: implement the total method
+  def decorate_total
+    "£" + sprintf('%.2f', bill.total)
   end
 
   def split_by(number)
     # TODO: implement the split_by method
   end
 
-  private
 
   attr_reader :bill
+  attr_accessor :total
 end

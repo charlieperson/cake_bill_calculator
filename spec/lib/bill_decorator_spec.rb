@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe BillDecorator do
+  let(:bill) { double(:bill) }
   subject { BillDecorator.new(bill) }
 
   describe '#total' do
-    xit 'should return a string with currency and two decimals' do
-      expect(subject.total).to eq('£10.00')
+    it 'should return a string with currency and two decimals' do
+      allow(bill).to receive(:total).and_return(10)
+      expect(subject.decorate_total).to eq('£10.00')
     end
   end
 
