@@ -4,14 +4,20 @@ class BillDecorator
   end
 
   def decorate_total
-    "£" + sprintf('%.2f', bill.total)
+    "£" + format(bill.total)
   end
 
   def split_by(number)
-    # TODO: implement the split_by method
+
   end
 
 
   attr_reader :bill
   attr_accessor :total
+
+  private
+
+  def format(number)
+    sprintf('%.2f', number)
+  end
 end
